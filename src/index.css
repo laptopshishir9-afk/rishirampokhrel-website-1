@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  .print\:hidden {
+    display: none !important;
+  }
+}
+
+/* 3D and Gradient Movement Keyframes */
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse-slow {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+@keyframes text-3d-pulse {
+  0%, 100% {
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px);
+    text-shadow: 
+      0 1px 0 #93c5fd,
+      0 2px 0 #60a5fa,
+      0 3px 0 #3b82f6,
+      0 4px 0 #2563eb,
+      0 6px 1px rgba(15, 23, 42, 0.15),
+      0 10px 20px rgba(37, 99, 235, 0.35);
+  }
+  50% {
+    transform: perspective(800px) rotateX(6deg) rotateY(-4deg) translateZ(25px);
+    text-shadow: 
+      0 1px 0 #bae6fd,
+      0 2px 0 #7dd3fc,
+      0 3px 0 #38bdf8,
+      0 5px 0 #0284c7,
+      0 8px 2px rgba(15, 23, 42, 0.2),
+      0 16px 28px rgba(2, 132, 199, 0.45);
+  }
+}
+
+@keyframes text-depth-wave {
+  0%, 100% {
+    transform: translateZ(0px);
+  }
+  50% {
+    transform: translateZ(18px) scale(1.02);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.96);
+    opacity: 0.6;
+  }
+}
+
+/* 3D styling enhancements */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 12s linear infinite;
+}
+
+.animate-gradient-flow {
+  background-size: 250% 250%;
+  animation: gradient-flow 6s ease infinite;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+.animate-3d-title {
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: text-3d-pulse 6s ease-in-out infinite;
+}
+
+.text-3d-shadow {
+  text-shadow: 
+    0 1px 0 #93c5fd,
+    0 2px 0 #60a5fa,
+    0 3px 0 #3b82f6,
+    0 4px 0 #2563eb,
+    0 6px 1px rgba(15, 23, 42, 0.12),
+    0 10px 20px rgba(37, 99, 235, 0.25);
+}
+
+.text-3d-subtle {
+  text-shadow: 
+    0 1px 0 #cbd5e1,
+    0 2px 0 #94a3b8,
+    0 4px 8px rgba(15, 23, 42, 0.1);
+}
+
+.animate-depth-wave {
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: text-depth-wave 4s ease-in-out infinite;
+}
+
