@@ -1,6 +1,7 @@
 import React from 'react';
 import { personalInfo, overviewData, experiences, skills, languages, education } from '../data/cvData';
 import { useProfilePhoto } from '../utils/photoState';
+import { PHOTO_DATA_URI } from '../assets/images/photoDataUri';
 import { Printer, X, Phone, Mail, MapPin, Award } from 'lucide-react';
 
 interface CVModalProps {
@@ -66,9 +67,14 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
             {/* Passport Photo */}
             <div className="shrink-0 w-24 h-32 rounded-lg border-2 border-slate-300 overflow-hidden bg-slate-100 shadow-sm">
               <img
-                src={photoUrl}
+                src={photoUrl || PHOTO_DATA_URI}
                 alt="Rishiram Pokhrel"
                 className="w-full h-full object-cover object-top"
+                onError={(e) => {
+                  if (e.currentTarget.src !== PHOTO_DATA_URI) {
+                    e.currentTarget.src = PHOTO_DATA_URI;
+                  }
+                }}
               />
             </div>
           </div>

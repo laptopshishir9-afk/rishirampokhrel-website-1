@@ -1,5 +1,6 @@
 import React from 'react';
 import { useProfilePhoto } from '../utils/photoState';
+import { PHOTO_DATA_URI } from '../assets/images/photoDataUri';
 import { ShieldCheck, Award } from 'lucide-react';
 
 export const HeroPhoto: React.FC = () => {
@@ -32,16 +33,21 @@ export const HeroPhoto: React.FC = () => {
           />
 
           {/* Inner Oval Image Frame */}
-          <div className="relative w-52 sm:w-60 md:w-68 h-68 sm:h-80 md:h-88 rounded-[50%] overflow-hidden bg-slate-950 border-[3px] border-white/90 shadow-2xl">
+          <div className="relative w-52 sm:w-60 md:w-68 h-68 sm:h-80 md:h-88 rounded-[50%] overflow-hidden bg-slate-100 border-[3px] border-white/90 shadow-2xl">
             <img
-              src={photoUrl}
+              src={photoUrl || PHOTO_DATA_URI}
               alt="Rishiram Pokhrel - Warehouse Supervisor"
               className="w-full h-full object-cover object-[center_14%] transition-transform duration-700 group-hover:scale-105"
               loading="eager"
+              onError={(e) => {
+                if (e.currentTarget.src !== PHOTO_DATA_URI) {
+                  e.currentTarget.src = PHOTO_DATA_URI;
+                }
+              }}
             />
 
             {/* Subtle bottom gradient for contrast */}
-            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/80 via-slate-950/25 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent pointer-events-none" />
 
             {/* Verified status seal inside bottom of the oval */}
             <div className="absolute bottom-3 inset-x-0 flex items-center justify-center pointer-events-none">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { personalInfo } from '../data/cvData';
 import { useProfilePhoto } from '../utils/photoState';
+import { PHOTO_DATA_URI } from '../assets/images/photoDataUri';
 import { ArrowUp, Phone, Mail, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -19,10 +20,15 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl p-[2px] bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-400 flex items-center justify-center shrink-0 border border-blue-400/50 shadow-md overflow-hidden">
                 <img
-                  src={photoUrl}
+                  src={photoUrl || PHOTO_DATA_URI}
                   alt="Rishiram Pokhrel"
                   className="w-full h-full object-cover object-[center_16%] rounded-[10px]"
                   loading="eager"
+                  onError={(e) => {
+                    if (e.currentTarget.src !== PHOTO_DATA_URI) {
+                      e.currentTarget.src = PHOTO_DATA_URI;
+                    }
+                  }}
                 />
               </div>
               <span className="text-white font-black text-lg tracking-tight">

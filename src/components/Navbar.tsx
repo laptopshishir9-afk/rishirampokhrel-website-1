@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/cvData';
 import { useProfilePhoto } from '../utils/photoState';
+import { PHOTO_DATA_URI } from '../assets/images/photoDataUri';
 import { Phone, FileDown, Menu, X, CheckCircle2 } from 'lucide-react';
 
 interface NavbarProps {
@@ -28,10 +29,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onPrintCV }) => {
           <a href="#" className="flex items-center gap-3 group" id="nav-brand-logo">
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl p-[2px] bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-400 flex items-center justify-center shrink-0 border border-blue-400/60 shadow-[0_4px_10px_rgba(37,99,235,0.25)] overflow-hidden group-hover:scale-105 transition-transform duration-300">
               <img
-                src={photoUrl}
+                src={photoUrl || PHOTO_DATA_URI}
                 alt="Rishiram Pokhrel"
                 className="w-full h-full object-cover object-[center_16%] rounded-[10px]"
                 loading="eager"
+                onError={(e) => {
+                  if (e.currentTarget.src !== PHOTO_DATA_URI) {
+                    e.currentTarget.src = PHOTO_DATA_URI;
+                  }
+                }}
               />
             </div>
             <div className="flex flex-col text-left">

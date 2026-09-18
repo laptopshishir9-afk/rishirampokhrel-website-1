@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
-import defaultPhoto from '../assets/images/rishiram_photo.jpg';
+import defaultPhotoFile from '../assets/images/rishiram_photo.jpg';
+import { PHOTO_DATA_URI } from '../assets/images/photoDataUri';
 
-// Default bundled image (relative asset path bundled by Vite)
-export const DEFAULT_PHOTO = defaultPhoto;
+// Embedded ultra-fast zero-404 photo (guaranteed to render everywhere)
+export const DEFAULT_PHOTO = PHOTO_DATA_URI;
+export const FALLBACK_FILE_PHOTO = defaultPhotoFile;
+export { PHOTO_DATA_URI };
 
 export function getStoredPhoto(): string {
   try {
